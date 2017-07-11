@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- The HTML 4.01 Transitional DOCTYPE declaration-->
+<!-- above set at the top of the file will set     -->
+<!-- the browser's rendering engine into           -->
+<!-- "Quirks Mode". Replacing this declaration     -->
+<!-- with a "Standards Mode" doctype is supported, -->
+<!-- but may lead to some differences in layout.   -->
+
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>MyFirst Web project</title>
+</head>
+<style>
+body {
+	background-image: url("img/download111111.jpg");
+	background-position: center center;
+	background-size: 90% auto;
+}
+</style>
+
+<body>
+	<center style="margin-top: 200px">
+		<h1>Welcome to Full Login Page</h1>
+		<form id="f1" action="/servlet1" method="post">
+			<label>User :</label> <input type="text" name="uname" align="middle"
+				placeholder="enter your name" /><br>
+			<br> <label>pass :</label> <input type="password" name="upass"
+				align="middle" placeholder="enter your password" /><br>
+			<br>
+		</form>
+		<form id="f2" action="/second" method="get"></form>
+		<div id=dd>
+			<input type="button" value="login" class="emailjob" align="middle"
+				onclick="document.getElementById('f1').submit();" />
+			&nbsp;&nbsp;&nbsp; <input type="button" value="signup"
+				class="emailjob" align="middle"
+				onclick="document.getElementById('f2').submit();" />
+		</div>
+	</center>
+</body>
+</html>
