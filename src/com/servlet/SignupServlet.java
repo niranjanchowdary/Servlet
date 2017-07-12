@@ -10,23 +10,25 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class SecondServlet extends HttpServlet {
+public class SignupServlet extends HttpServlet {
 	UserData objn;
 	final static HashMap<String, String> mapobject = new HashMap<>();
 	String uname1;
 	String passa;
 
 	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		resp.setContentType("text/plain");
+		resp.setContentType("text/html");
 		PrintWriter out = resp.getWriter();
 		String name = req.getParameter("usname");
 		String pass = req.getParameter("uspass");
 		String pass1 = req.getParameter("uspass1");
+		
 		if (pass1.equals(pass) && name != "" && pass != "" && pass1 != "") {
 			if (!mapobject.containsKey(name)) {
 				objn = new UserData(name, pass);
 				out.println("<center>successfully registred with ur fields</center>");
 				out.print("<body  background=\"img/download111111.jpg\">\n");
+				req.getRequestDispatcher("/").forward(req, resp);
 				uname1 = objn.getUser();
 				passa = objn.getPass();
 				mapobject.put(uname1, passa);
@@ -35,23 +37,20 @@ public class SecondServlet extends HttpServlet {
 				req.getRequestDispatcher("/SignUp.html").include(req, resp);
 			}
 		}
+		else if((!pass.equals(pass1))&&name!=""&&pass!=""&&pass1!=""){
+			out.print("<center>sorry password must match to access</center>");
+			RequestDispatcher reg = req.getRequestDispatcher("/SignUp.html");
+			reg.include(req, resp);
+			
+		}
 
-		// out.println(uname1+""+passa);
-		if (name != "" && pass != "" && pass1 != "") {
-			if (name.equals(uname1) && pass.equals(passa)) {
-				req.getRequestDispatcher("/index.html").forward(req, resp);
-			} else {
-				out.print("<center>sorry must fill all content to access</center>");
-				RequestDispatcher reg = req.getRequestDispatcher("/SignUp.html");
-				reg.forward(req, resp);
-			}
-		} else {
+		else{
 			out.print("<center>sorry empty fields con't to access</center>");
 			RequestDispatcher reg = req.getRequestDispatcher("/SignUp.html");
 			reg.forward(req, resp);
 		}
-	}
-
+		
+		} 
 	public static HashMap<String, String> getData() {
 		// TODO Auto-generated method stub
 		if (mapobject.isEmpty()) {

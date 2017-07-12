@@ -11,18 +11,17 @@ import javax.servlet.http.HttpSession;
 
 public class Welcome extends HttpServlet{
 
-	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException,IOException{
+	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException,IOException{
 		resp.setContentType("text/html");
 		PrintWriter out=resp.getWriter();
 		HttpSession session=req.getSession(false);
 		try{
-			if(session.getAttribute("username")==null)
-			{
-				 req.getRequestDispatcher("/index.html").include(req, resp);
-				 out.println("welcome");
-			}
-			else if(session!=null){
-				out.println("welcome");
+			
+			
+			if(session!=null){	 
+				session.invalidate();
+				resp.sendRedirect("/");
+				//req.getRequestDispatcher("/index.html").include(req, resp);
 			}
 			
 			

@@ -22,24 +22,12 @@ body {
 <body>
 	<center style="margin-top: 200px">
 		<h1>Welcome to Full Login Page</h1>
-		<form id="f1" action="/login" method="post">
+		<form id="f1" action="/password" method="get">
 			<label>User :</label> <input type="text" name="uname" align="middle"
-				placeholder="enter your name" required /><br>
-			<br> <label>pass :</label> <input type="password" name="upass"
-				align="middle" placeholder="enter your password" required" /><br>
-			<br>
-			<a href="/forgotpage"> forgot password?</a>
-		</form>
-		<form id="f2" action="/signup" method="get"></form>
-		<div id=dd>
-			<input type="button" value="login" class="emailjob" align="middle"
+				placeholder="enter your name" required /><br> <input
+				type="button" value="login" class="emailjob" align="middle"
 				onclick="document.getElementById('f1').submit();" />
-			&nbsp;&nbsp;&nbsp; <input type="button" value="signup"
-				class="emailjob" align="middle"
-				onclick="document.getElementById('f2').submit();" />
-		</div>
-		<footer style="margin-top:240px">&copy; Copyright 2017 Full</footer>
+		</form>
 	</center>
-	
 </body>
 </html>
